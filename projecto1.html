@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <META http-equiv=refresh content=115>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Juegos</title>
+    <link rel="stylesheet" href="estilo.css">
+    <!--probando cursor :'v -->
+    <style>
+        :root {
+            --cursor-size: 40px;
+        }
+
+        /* Estilo del cursor */
+        #cursor {
+            position: fixed;
+            top: calc(var(--cursor-size) * -0.5);
+            left: calc(var(--cursor-size) * -0.5);
+            width: var(--cursor-size);
+            height: var(--cursor-size);
+            pointer-events: none;
+            mix-blend-mode: difference;
+            filter: url(#goo);
+        }
+
+        .cursor-circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: var(--cursor-size);
+            height: var(--cursor-size);
+            border-radius: 50%;
+            background-color: #ffffff;
+            transform-origin: center center;
+        }
+   </style>
+    
+        <!--/*filtro SVG para el efecto "gooey" no esta saliendo bien :'v**/-->
+        <svg width="0" height="0">
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="
+                    1 0 0 0 0
+                    0 1 0 0 0
+                    0 0 1 0 0
+                    0 0 0 20 -10" result="gooey" />
+                <feBlend in="SourceGraphic" in2="gooey" />
+            </filter>
+        </svg>
+    </style>
+    <!--fin de cursor :v-->
+</head>
+<body>
+<audio src="silent.mp3" autoplay loop>
+    tu navegador es gozu.
+    
+</audio>
+<header>
+    <h1>Venta de Juegos Online</h1>
+    <!--boton de menu para celus-->
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="main-nav">
+        <a href="url-para-inicio">Inicio</a>
+        <a href="lista-de-juegos">Juegos</a>
+        <a href="reloj/reloj.html">Ver Reloj</a>
+        <a href="url-para-contacto">Contactos</a>
+    </nav>
+</header>
+
+<section class="banner">
+    <h2>Encuentra los Mejores Juegos al Mejor Precio</h2>
+    <p>Explora nuestra selección de juegos para todas las plataformas</p>
+    <button onclick="location.href='url-para-ofertas'">Ver Ofertas</button>
+</section>
+
+<section class="carousel">
+    <div class="carousel-slide active">
+        <img src="img/godofwar.jpg" alt="Imagen 1">
+        <div class="carousel-caption">
+            <h3>God Of War</h3>
+            <p>Una Saga inolvidable en 4k.
+            Muy pronto a un 20% de descuento</p>
+        </div>
+    </div>
+    <div class="carousel-slide">
+        <img src="img/fallout.jpg" alt="Imagen 2">
+        <div class="carousel-caption">
+            <h3>FallOut</h3>
+            <p>EL Caballero Taitus Fue nerfeado
+            Muy pronto a un 45% de descuento</p>
+        </div>
+    </div>
+    <div class="carousel-slide">
+        <img src="img/gears.jpg" alt="Imagen 3">
+        <div class="carousel-caption">
+            <h3>Gears Of Wars</h3>
+            <p>La ultima partida con Dominic Santiago en 4k
+            Muy pronto </p>
+        </div>
+    </div>
+</section>
+
+<section class="lista-de-juegos">
+    <h2>Juegos Destacados</h2>
+    <div class="juegos-listados">
+        <img src="img/gta6.gif" alt="Grand Theft Auto V">
+        <h3><a href="url-para-juego1">Grand Theft Auto V</a></h3>
+        <p>Es un juego chevere :3</p>
+        <span>$Bs. 70.00</span>
+        <button onclick="location.href='url-para-comprar-juego1'">Comprar</button>
+    </div>
+    <div class="juegos-listados">
+        <img src="img/wonder.png" alt="Shadow Of The Colossus">
+        <h3><a href="url-para-juego2">Shadow Of The Colossus</a></h3>
+        <p>El mejor juego del mundo</p>
+        <span>Bs. 150.00</span>
+        <button onclick="location.href='url-para-comprar-juego2'">Comprar</button>
+    </div>
+    <div class="juegos-listados">
+        <img src="img/finalfantasy.jpg" alt="Final Fantasy XV">
+        <h3><a href="url-para-juego1">Final Fantasy XV</a></h3>
+        <p>tifa♥</p>
+        <span>$Bs. 70.00</span>
+        <button onclick="location.href='url-para-comprar-juego1'">Comprar</button>
+    </div>
+    <div class="juegos-listados">
+        <img src="img/halo.jpg" alt="Halo Aniversary">
+        <h3><a href="url-para-juego2">Halo Aniversary</a></h3>
+        <p>besto juego</p>
+        <span>Bs. 150.00</span>
+        <button onclick="location.href='url-para-comprar-juego2'">Comprar</button>
+    </div>
+</section>
+
+<section class="about">
+    <h2>Sobre Nosotros</h2>
+    <p>Somos una tienda bien chevere</p>
+</section>
+
+<section id="contacto">
+    <h2>Contacto</h2>
+    <form onsubmit="return sendMessage()">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Mensaje:</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Enviar</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2024 alz. Todos los derechos reservados.</p>
+</footer>
+
+<!--script para el boton de menu-->
+<script>
+    function toggleMenu() {
+        const nav = document.getElementById('main-nav');
+        nav.classList.toggle('visible');
+    }
+</script>
+<!--script para cambiar de imagen en el carrusel -->
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".carousel-slide");
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle("active", i === index);
+        });
+    }
+
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }, 3000); //cambia de imagen cada 3 segundos x 1000
+</script>
+<script>
+    function sendMessage() {
+        alert("Gracias por contactarte con nosotros, nos pondremos en contacto muy pronto :3 ♥"); //muestra una alerta de confirmacion
+        form.reset(); //limpia los campos del formulario
+        return false; //evita la recarga de la pagina
+    }
+</script>
+<!--mas cositas del cursor-->
+    <div id="cursor">
+    <div class="cursor-circle"></div>
+</div>
+
+<script>
+    const cursor = document.getElementById('cursor');
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        // Crea una nueva gota
+        const drip = document.createElement('div');
+        drip.classList.add('drip');
+        drip.style.left = `${e.clientX}px`;
+        drip.style.top = `${e.clientY}px`;
+        document.body.appendChild(drip);
+
+        //elimina la gota después de que se desvanezca
+        drip.addEventListener('animationend', () => {
+            drip.remove();
+        });
+    });
+</script>
+<!--fin de cursor-->
+</body>
+</html>
+
+<!--<script>
+<div id="cursor"></div>
+
+
+    const cursor = document.getElementById('cursor');
+
+    document.addEventListener('mousemove', (e) => {
+        // Mueve el cursor principal
+        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+
+        // Crea una nueva gota
+        const drip = document.createElement('div');
+        drip.classList.add('drip');
+        drip.style.left = `${e.clientX}px`;
+        drip.style.top = `${e.clientY}px`;
+        document.body.appendChild(drip);
+
+        // Elimina la gota después de que se desvanezca
+        drip.addEventListener('animationend', () => {
+            drip.remove();
+        });
+    });
+</script>

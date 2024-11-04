@@ -1,0 +1,55 @@
+    body {
+      background-color: #000;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Nube */
+    .cloud {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 120px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 30px 30px 60px #fff, -30px 30px 60px #fff, -30px -30px 60px #fff, 30px -30px 60px #fff;
+      z-index: 10;
+    }
+
+    /* Letras que caen */
+    .rain {
+      position: absolute;
+      top: 10%;
+      color: #0f0;
+      font-size: 20px;
+      font-weight: bold;
+      opacity: 0;
+      animation: fall linear infinite;
+    }
+
+    /* Animación de caída y dispersión */
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+        transform: translateY(80vh); /* Caída principal */
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(80vh) translateX(calc(-50px + 100 * var(--randomX))); /* Dispersión */
+      }
+    }
+
+    /* Piso */
+    .floor {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 5px;
+      background: #555;
+    }

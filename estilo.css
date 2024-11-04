@@ -1,0 +1,258 @@
+/* Estilos globales */
+body {
+    font-family: chiller, sans-serif;
+    font-size: 25px;
+    margin: 0;
+    padding: 0;
+    background-image: url("img/fondo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+h1 {
+    color: write; /*efecto neon para titulo*/
+    text-shadow: 0px 0px 10px cyan,
+                 0px 0px 20px cyan,
+                 0px 0px 40px cyan,
+                 0px 0px 80px cyan;
+}
+
+/*fondo para cada seccion */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    background-image: url('img/header.gif'); /*fondo de encabezado */
+    background-size: cover;
+    weight: 1200px;
+    position: relative;
+}
+
+/*boton de menu para pantallss pequeñas */
+.menu-toggle {
+    display: none; /*oculto en pantallas grandes */
+    font-size: 1.5em;
+    backgcround: none;
+    border: none;
+    color: white;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+/*estilos de navegacion */
+nav {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/*fondo y diseño de las secciones */
+.banner {
+    background-color: #0073e6;
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+    background-image: url('img/banner.jpg'); /*fondo de banner */
+    background-size: cover;
+    background-position: center;
+}
+/*estilos para carrusel */
+.carousel {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    display: none;
+    position: relative;
+}
+
+.carousel-slide.active {
+    display: block;
+}
+
+.carousel-slide img {
+    width: 90%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.carousel-slide:hover .carousel-caption {
+    opacity: 1; /*muestra el titulo y la descripcion al pasar el cursor */
+}
+
+/*efecto de zooom para imagenes en lista-de-juegos y .juegos-listados */
+.lista-de-juegos img,
+.juegos-listados img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.lista-de-juegos img:hover,
+.juegos-listados img:hover {
+    transform: scale(1.1);
+}
+
+
+.lista-de-juegos {
+    padding: 20px;
+    margin: 20px;
+    color: white;
+    text-align: center;
+    background-color: #f4f4f4;
+    background-image: url('img/fondo.gif'); /*fondo para juegos destacados */
+    background-size: cover;
+    background-position: center;
+}
+.juegos-listados img {
+    width: 800px;  /* Ancho fijo para todas las imágenes de juegos */
+    height: 450px; /* Alto fijo para todas las imágenes de juegos */
+    object-fit: cover; /* Recorta la imagen si es necesario para llenar el contenedor */
+    border-radius: 8px; /* Opcional: agrega un borde redondeado a las imágenes */
+
+}
+@keyframes zoomBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    70% { transform: scale(1.1); }
+}
+/*efecto hover para agrandar la imagen */
+.lista-de-juegos img:hover, .juegos-listados img:hover {
+    transform: scale(1.1); /* Escala la imagen al 110% cuando se pasa el cursor */
+    animation: zoomBounce 1s ease; /*uuración y tipo de animacion */
+}
+.about {
+    padding: 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+    background-image: url('img/nosotros.jpg'); /*fondo para nosotros*/
+    background-size: cover;
+    background-position: center;
+}
+
+#contacto {
+    padding: 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+    background-image: url('contact-bg.jpg'); /*fondo para contacto */
+    background-size: cover;
+    background-position: center;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    color: write; /*efecto neon para titulo*/
+    text-shadow: 0px 0px 10px cyan,
+                 0px 0px 20px blue,
+                 0px 0px 40px brown,
+                 0px 0px 80px red;
+
+}
+
+button:hover .stars{
+    display: block;
+    filter: drop-shadow(0 0 10px #fffdef);
+}
+
+#cursor{
+    position: fixed;
+    top: calc(var(--cursor-size)* -0.5);
+    left: calc(var(--cursor-size)* -0.5);
+    mix-blend-mode: difference;
+    filter: url(#goo);
+}
+.cursor-circle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--cursor-size);
+    height: var(--cursor-size);
+    border-radius: var(--cursor-size);
+    transform-origin: center center;
+}
+
+
+/*diseño responsivo para pantallas mmm mediana */
+@media (max-width: 768px) {
+    nav {
+        display: none; /*oculto en pantallas pequeñas */
+        flex-direction: column;
+        gap: 20px;
+        background-color: #333;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 50px;
+    }
+
+    nav.visible {
+        display: flex; /*mostrar menu al hacer clic */
+    }
+
+    .menu-toggle {
+        display: block; /*mostrar botón de menú en pantallas pequeñas */
+    }
+
+    .banner h2 {
+        font-size: 1.5em;
+    }
+
+    .lista-de-juegos {
+        padding: 10px;
+    }
+
+    .juegos-listados {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #contacto form {
+        width: 90%;
+    }
+}
+
+/*para pantallas muy pequeñas*/
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    .banner h2 {
+        font-size: 1.2em;
+    }
+
+    .banner p {
+        font-size: 1em;
+    }
+
+    .juegos-listados {
+        padding: 10px;
+    }
+
+    #   contacto form {
+        width: 100%;
+    }
+}

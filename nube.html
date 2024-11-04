@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrix Rain Cloud</title>
+  <style>
+    /* Estilos básicos */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #000;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Nube */
+    .cloud {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 120px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 30px 30px 60px #fff, -30px 30px 60px #fff, -30px -30px 60px #fff, 30px -30px 60px #fff;
+      z-index: 10;
+    }
+
+    /* Letras que caen */
+    .rain {
+      position: absolute;
+      top: 10%;
+      color: #0f0;
+      font-size: 20px;
+      font-weight: bold;
+      opacity: 0;
+      animation: fall linear infinite;
+    }
+
+    /* Animación de caída y dispersión */
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+        transform: translateY(80vh); /* Caída principal */
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(80vh) translateX(calc(-50px + 100 * var(--randomX))); /* Dispersión */
+      }
+    }
+
+    /* Piso */
+    .floor {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 5px;
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="cloud"></div>
+  <div class="floor"></div>
+
+  <script>
+    const characters = "01";
+    const cloudLeft = window.innerWidth / 2 - 100; // Ancho de la nube dividido entre dos
+    const cloudWidth = 200;
+
+    function createRain() {
+      const rain = document.createElement("div");
+      rain.classList.add("rain");
+      rain.innerText = characters.charAt(Math.floor(Math.random() * characters.length));
+
+      // Posicionar letra aleatoriamente dentro de la nube
+      rain.style.left = cloudLeft + Math.random() * cloudWidth + "px";
+
+      // Establecer la duración y el retraso de la animación
+      rain.style.animationDuration = 2 + Math.random() * 2 + "s";
+      rain.style.animationDelay = Math.random() * 1 + "s";
+
+      // Generar un valor aleatorio para la dispersión horizontal en el piso
+      rain.style.setProperty('--randomX', Math.random().toFixed(2));
+
+      document.body.appendChild(rain);
+
+      // Eliminar el elemento cuando termine la animación
+      rain.addEventListener("animationend", () => {
+        rain.remove();
+      });
+    }
+
+    // Crear lluvia continuamente
+    setInterval(createRain, 200);
+  </script>
+</body>
+</html>
